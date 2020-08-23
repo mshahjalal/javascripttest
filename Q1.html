@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <title>Q1</title>
+    </head>
+    <body onload="initialValues()">
+
+        <h1>Initial values</h1>
+        <p id="notification"></p>
+    </body>
+</html>
+
+
+<script>
+let text = "";
+let setInitialValues = (element, index, array) => {
+    text += `<li>message:${element.message} read:${element.read}</li>`;
+    return element;
+};
+
+initialValues = () => {
+    let notifications_ = [
+            {message: "Lorem", read: true},
+            {message: "Ipsum", read: true},
+            {message: "Dolor", read: true},
+            {message: "Sit", read: false},
+            {message: "Amet", read: true}
+        ];
+
+        notifications_.every(setInitialValues);
+
+    document.getElementById("notification").innerHTML = `<ul>${text}</ul>`;
+};
+
+
+//================= Start que 1: =====================================
+let allRead = true,
+    notifications = [
+        {message: "Lorem", read: true},
+        {message: "Ipsum", read: true},
+        {message: "Dolor", read: true},
+        {message: "Sit", read: false},
+        {message: "Amet", read: true}
+    ];
+
+let isSetNewVariable = (element, index, array) => {
+    array[index].allRead = false;
+    return element;
+};
+
+notifications.every(isSetNewVariable);
+console.log("Print notifications array after set new variable:",notifications); 
+//================ End que 1 =============================================
+
+//================= Start que 2: =========================================
+let arr = [1, 2, 2, 3, 4, 4, 5];
+
+arr = [...new Set(arr)];
+console.log("Print arr after remove duplicate:",arr); 
+//=============== End que 2 =============================================
+
+//============== Start que 3: ===========================================
+//This question can be answered in two ways
+
+    //start option 1
+    function wearPPE() {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve('Wearing PPE'), 2000);
+        })
+    }
+
+    function fightCorona() {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve('Fighting Corona'), 1000);
+        })
+    }
+
+    async function execute() {
+        await wearPPE().then(result => console.log(result));
+        await fightCorona().then(result => console.log(result));
+    }
+
+    execute();
+    //end option 1
+
+    //start option 2
+    //Please comment out and run. result will be same as option 1
+    // function wearPPE() {
+    //     return new Promise((resolve) => {
+    //         setTimeout(() => resolve('Fighting Corona'), 2000);
+    //     })
+    // }
+
+    // function fightCorona() {
+    //     return new Promise((resolve) => {
+    //         setTimeout(() => resolve('Wearing PPE'), 1000);
+    //     })
+    // }
+
+    // function execute() {
+    //     wearPPE().then(result => console.log(result));
+    //     fightCorona().then(result => console.log(result));
+    // }
+
+    // execute();
+    //end option 2
+//=================== End que 3 =======================================
+</script>
